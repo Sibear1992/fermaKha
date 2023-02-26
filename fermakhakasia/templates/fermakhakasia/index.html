@@ -1,0 +1,36 @@
+{% extends 'fermakhakasia/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="p-container">
+        <h1 class="mb-3">Добро пожаловать на наш сайт!</h1>
+        <p>Мы предлагаем выращивать свои овощи и зелень на грядках!</p>
+        <p>У нас вы можете:</p>
+        <ul>
+            {% if not user.is_authenticated %}
+            <li>Зарегистрироваться на сайте</li>
+            {% endif %}
+            <li>Купить грядку и начать выращивать свои овощи</li>
+        </ul>
+        <div class="btn-group">
+            {% if not user.is_authenticated %}
+            <a href="{% url 'register' %}" class="btn btn-primary">Зарегистрироваться</a>
+            {% endif %}
+            <a href="{% url 'shop' %}" class="btn btn-secondary">Купить грядку</a>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block css_page %}
+      <style>
+        .btn-group {
+          margin-top: 20px;
+        }
+
+        .btn {
+          margin-right: 10px;
+        }
+      </style>
+{% endblock %}
